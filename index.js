@@ -1,12 +1,13 @@
 const express = require("express");
-
+res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ a: 1 }));
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Express on Vercel Siten");
 });
-app.post("/get-food", (req, res) => {
-  res.send([
+app.get("/get-food", (req, res) => {
+  res.json([
     {
       id:'1',
       name: 'Pizza Pepperoni',
@@ -97,8 +98,8 @@ app.post("/get-food", (req, res) => {
     },
   ]);
 });
-app.post("/get-tag", (req, res) => {
-  res.send([
+app.get("/get-tag", (req, res) => {
+  res.json([
     { name: 'All', count: 8 },
     { name: 'FastFood', count: 4 },
     { name: 'Pizza', count: 3 },
