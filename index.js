@@ -1,6 +1,5 @@
 const express = require("express");
-res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ a: 1 }));
+
 const app = express();
 
 app.get("/", (req, res) => {
@@ -110,8 +109,8 @@ app.get("/get-tag", (req, res) => {
     { name: 'Soup', count: 1 },
   ]);
 });
-app.listen(5000, () => {
-  console.log("Running on port 5000.");
+app.listen(6000, () => {
+  console.log("Running on port 6000.");
 });
 
 // Export the Express API
