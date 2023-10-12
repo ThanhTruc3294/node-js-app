@@ -1,11 +1,12 @@
 const express = require("express");
+var cors = require('cors');
 
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Express on Vercel Siten");
 });
-app.get("/get-food", (req, res) => {
+app.get("/get-food", cors({ origin: false }), (req, res) => {
   res.json([
     {
       id:'1',
@@ -97,7 +98,7 @@ app.get("/get-food", (req, res) => {
     },
   ]);
 });
-app.get("/get-tag", (req, res) => {
+app.get("/get-tag", cors({ origin: false }), (req, res) => {
   res.json([
     { name: 'All', count: 8 },
     { name: 'FastFood', count: 4 },
