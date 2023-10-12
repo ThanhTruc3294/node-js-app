@@ -2,15 +2,23 @@ const express = require("express");
 var cors = require('cors');
 
 const app = express();
+const corsOpts = {
+  origin: '*',
 
+  methods: [
+    'GET',
+    'POST',
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+app.use(cors(corsOpts));
 app.get("/", (req, res) => {
   res.send("Express on Vercel Siten");
 });
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions = { origin: false } // disable CORS for this request
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
-app.get("/get-food", cors(corsOptionsDelegate), (req, res) => {
+app.get("/get-food", (req, res) => {
   res.json([
     {
       id:'1',
@@ -102,7 +110,7 @@ app.get("/get-food", cors(corsOptionsDelegate), (req, res) => {
     },
   ]);
 });
-app.get("/get-tag", cors(corsOptionsDelegate), (req, res) => {
+app.get("/get-tag", (req, res) => {
   res.json([
     { name: 'All', count: 8 },
     { name: 'FastFood', count: 4 },
