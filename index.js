@@ -104,6 +104,7 @@ const corsOpts = {
 
   allowedHeaders: [
     'Content-Type',
+    'Authoriztion',
   ],
 };
 app.use(cors(corsOpts));
